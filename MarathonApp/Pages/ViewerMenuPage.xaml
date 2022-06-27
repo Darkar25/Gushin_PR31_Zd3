@@ -1,0 +1,42 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.ViewerMenuPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="ViewerMenuPage">
+
+    <Grid>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Меню зрителя"/>
+            <StackLayout Orientation="Horizontal">
+                <Frame Style="{StaticResource BigButtonBorder}" x:Name="AddCommentButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddCommentButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Оставить отзыв" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
+                <Frame Style="{StaticResource BigButtonBorder}" x:Name="CommentStatButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CommentStatButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Статистика отзывов" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </Frame>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="PageCountLabel" Margin="10" HorizontalOptions="Center" Text="{Binding PageCount}"/>
+                <StackLayout Orientation="Horizontal">
+                    <Button x:Name="PageDownButton" Text="&lt;" Clicked="PageDownButton_Clicked"/>
+                    <ContentView>
+                        <CarouselView x:Name="PictureListView">
+                            <CarouselView.ItemTemplate>
+                                <DataTemplate>
+                                    <Image Source="boy.png" HeightRequest="100" WidthRequest="100">
+                                    </Image>
+                                </DataTemplate>
+                            </CarouselView.ItemTemplate>
+                        </CarouselView>
+                    </ContentView>
+                    <Button x:Name="PageUpButton" Text="&gt;" Clicked="PageUpButton_Clicked"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+</ContentPage>

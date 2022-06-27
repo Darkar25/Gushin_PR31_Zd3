@@ -1,0 +1,57 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.StartingPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             Title="Стартовая страница">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="{StaticResource MainColor}"/>
+        <StackLayout Background="{StaticResource MainColor}" HorizontalOptions="Center" VerticalOptions="Center"> 
+            <Label Text="MARATHON SKILLS 2022" Style="{StaticResource MainLabel}"/>
+            <Label Text="Москва, Россия" HorizontalOptions="Center"/>
+            <Label x:Name="StartDateLabel" HorizontalOptions="Center"/>
+        </StackLayout>
+
+        <extensions:UniformGrid Grid.Row="1" VerticalOptions="Start">
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="ButtonRunnerRegister">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ButtonRunnerRegister_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">Я хочу стать бегуном</Label>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="ButtonViewerRegister">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ButtonViewerRegister_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">Я хочу стать зрителем</Label>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="ButtonSponsorRegister">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ButtonSponsorRegister_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">Я хочу стать спонсором бегуна</Label>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="ButtonInfo">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ButtonInfo_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">Я хочу узнать больше о событии</Label>
+            </Frame>
+            
+            </extensions:UniformGrid>
+
+        <Frame Style="{StaticResource SmallButtonBorder}" Grid.Row="1" HorizontalOptions="End" VerticalOptions="End" x:Name="LoginButton">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="LoginButton_MouseLeftButtonDown"/>
+            </Frame.GestureRecognizers>
+            <Label Text="Login"/>
+        </Frame>        
+
+
+        <Label x:Name="TimerLabel" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+    </Grid>
+</ContentPage>

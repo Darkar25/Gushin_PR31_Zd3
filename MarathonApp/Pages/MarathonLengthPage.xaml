@@ -1,0 +1,43 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.MarathonLengthPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:xct="http://xamarin.com/schemas/2020/toolkit" xmlns:tabview="clr-namespace:Syncfusion.XForms.TabView;assembly=Syncfusion.SfTabView.XForms"
+             Title="MarathonLengthPage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <xct:DockLayout>
+        <Label Text="Насколько долгий марафон?" xct:DockLayout.Dock="Top"/>
+        <tabview:SfTabView xct:DockLayout.Dock="Right">
+            <tabview:SfTabItem Title="Скорость">
+                <tabview:SfTabItem.Content>
+                    <ListView x:Name="spid" ItemSelected="spid_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Image Source="{Binding Photo}"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </tabview:SfTabItem.Content>
+            </tabview:SfTabItem>
+            <tabview:SfTabItem Title="Дистанция">
+                <tabview:SfTabItem.Content>
+                    <ListView x:Name="dist" ItemSelected="spid_SelectionChanged">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <Image Source="{Binding Photo}"/>
+                                    <Label Text="{Binding Name}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </tabview:SfTabItem.Content>
+            </tabview:SfTabItem>
+        </tabview:SfTabView>
+        <Label xct:DockLayout.Dock="Top" Text="{Binding hl.Name}"/>
+        <Label xct:DockLayout.Dock="Bottom" Text="{Binding hl.Description}"/>
+        <Image Source="{Binding hl.Photo}"/>
+    </xct:DockLayout>
+</ContentPage>

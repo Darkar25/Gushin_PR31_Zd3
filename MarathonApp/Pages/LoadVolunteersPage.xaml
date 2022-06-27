@@ -1,0 +1,18 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.LoadVolunteersPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="LoadVolunteersPage">
+
+    <StackLayout>
+        <Label Text="Загрузка волонтеров"/>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Label Text="CSV Файл волонтеров"/>
+            <Entry x:Name="file"/>
+            <Button Text="Просмотр..." Clicked="Button_Clicked_1"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+            <Button Text="Загрузка" Clicked="Button_Clicked_2"/>
+            <Button Text="Отмена" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

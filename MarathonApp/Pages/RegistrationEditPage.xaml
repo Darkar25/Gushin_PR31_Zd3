@@ -1,0 +1,93 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.RegistrationEditPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+             Title="RegistrationEditPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="150"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="WidthRequest" Value="100"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+
+    </ContentPage.Resources>
+    <Grid>
+        <Label Text="Редактирование профиля"/>
+        <forms:WrapLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email:" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry x:Name="EmailEntry" IsReadOnly="True"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Имя:" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry x:Name="FirstNameEntry" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Фамилия:" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry x:Name="LastNameEntry" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Пол:" Style="{StaticResource DescriptionLabel}"/>
+                    <Picker x:Name="GenderPicker" ItemDisplayBinding="{Binding Gender1}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Дата рождения:" Style="{StaticResource DescriptionLabel}"/>
+                    <DatePicker x:Name="DateOfBirthDatePicker"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Страна:" Style="{StaticResource DescriptionLabel}"/>
+                    <Picker x:Name="CountryPicker" ItemDisplayBinding="{Binding CountryName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Регистрационный статус:" Style="{StaticResource DescriptionLabel}"/>
+                    <Picker x:Name="RegisterStatus" ItemDisplayBinding="{Binding RegistrationStatus1}"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Image x:Name="RunnerImage" HeightRequest="50" WidthRequest="50"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Фото файл:"/>
+                    <Entry x:Name="PhotoPathEntry" IsReadOnly="True"/>
+                    <Frame Style="{StaticResource SmallButtonBorder}" Margin="0" HeightRequest="30" x:Name="FileButton">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FileButton_MouseLeftButtonDown"/>
+                        </Frame.GestureRecognizers>
+                        <Label Text="Просмотр..." />
+                    </Frame>
+                </StackLayout>
+                <Label Text="Смена пароля"/>
+                <Label Text="Оставте эти поля, незаполненными, если вы не хотите изменять пароль" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Пароль" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry IsPassword="True" x:Name="PasswordEntry"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Повторите пароль" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry IsPassword="True" x:Name="PasswordRepeatEntry"/>
+                </StackLayout>
+            </StackLayout>
+        </forms:WrapLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End">
+            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="SaveButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SaveButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Сохранить"/>
+            </Frame>
+            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="CancelButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CancelButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Отмена"/>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>

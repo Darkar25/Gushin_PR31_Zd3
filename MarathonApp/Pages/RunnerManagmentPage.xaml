@@ -1,0 +1,96 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.RunnerManagmentPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="RunnerManagmentPage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <xct:DockLayout>
+        <StackLayout xct:DockLayout.Dock="Bottom" Orientation="Horizontal">
+            <Button Text="Поках сертификата" Clicked="Button_Clicked"/>
+            <Button Text="Печать бейджа"/>
+            <Button Text="Редактирование профиля"/>
+        </StackLayout>
+        <StackLayout xct:DockLayout.Dock="Left">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Email:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Runner.Email}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Имя:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Runner.RunnerFIO}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Пол:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Runner.Gender}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Дата рождения:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Runner.DateOfBirth}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Страна:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Runner.Country.CountryName}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Благотворит:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Charity.CharityName}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Пожертвовано:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.Charity.MoneyCount}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Выбранный пакет:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.RaceKitOption.RaceKitOption1}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Дистанция:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.RegistrationEvent[0]}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Регистрационный статус:" FontAttributes="Bold"/>
+                        <Span Text="{Binding reg.RegistrationStatus.RegistrationStatus1}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+        <Image Source="{Binding reg.Runner.Img}"/>
+    </xct:DockLayout>
+</ContentPage>

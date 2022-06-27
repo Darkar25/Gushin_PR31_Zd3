@@ -1,0 +1,33 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.MarathonInfoPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             Title="MarathonInfoPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Text="Информация о Marathon Skills" 
+               Grid.ColumnSpan="2" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Start"/>
+        <StackLayout WidthRequest="300" Grid.Row="1">
+            <Image Source="MarathonMap.jpg" HeightRequest="200" x:Name="InteractiveMap">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="InteractiveMap_MouseLeftButtonDown"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <extensions:UniformGrid Margin="10">
+                <Image Source="banco_banespa.jpg" WidthRequest="100" HeightRequest="100"/>
+                <Image Source="ibirapuera_park_lake.jpg" WidthRequest="100" HeightRequest="100"/>
+                <Image Source="teatro_municipal.jpg" WidthRequest="100" HeightRequest="100"/>
+                <Image Source="marathon_image.jpg" WidthRequest="100" HeightRequest="100"/>
+            </extensions:UniformGrid>
+        </StackLayout>
+    </Grid>
+</ContentPage>

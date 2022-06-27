@@ -1,0 +1,27 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.CoordinatorMenuPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+             Title="CoordinatorMenuPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Text="Меню координатора" HorizontalOptions="Center" VerticalOptions="Center"/>
+        <forms:WrapLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1">
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="RunnersButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RunnersButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Бегуны" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="CharityButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CharityButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Спонсоры" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+        </forms:WrapLayout>
+    </Grid>
+</ContentPage>

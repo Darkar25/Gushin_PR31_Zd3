@@ -1,0 +1,29 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.AdminMenuPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             Title="AdminMenuPage">
+
+    <Grid>
+        <Label Text="Меню администратора" HorizontalOptions="Center" VerticalOptions="Start"/>
+        <extensions:UniformGrid HorizontalOptions="Center" VerticalOptions="Center">
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="UsersButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="UsersButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Пользователи"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="VolunteersButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="VolunteersButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Волонтёры"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="CharityButton">
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Благотворительные организации"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="InventoryButton">
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Text="Инвентарь"/>
+            </Frame>
+        </extensions:UniformGrid>
+    </Grid>
+</ContentPage>

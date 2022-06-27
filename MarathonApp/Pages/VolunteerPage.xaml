@@ -1,0 +1,45 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.VolunteerPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="VolunteerPage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <xct:DockLayout>
+        <Label Text="Управление волонтерами" xct:DockLayout.Dock="Top"/>
+        <Grid xct:DockLayout.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="Сортировка и фильтрация" Grid.ColumnSpan="2" HorizontalOptions="Center"/>
+            <Label Text="Сортировать по:" Grid.Row="1"/>
+            <Picker Grid.Column="1" Grid.Row="1" x:Name="filter">
+            </Picker>
+            <Label Text="Загрузка" Grid.Column="2" HorizontalOptions="Center"/>
+            <Button Text="Загрузка волонтеров" Grid.Column="2" Grid.Row="1" Clicked="Button_Clicked_1"/>
+            <Button Text="Обновить" Clicked="Button_Clicked" Grid.Column="1" Grid.Row="2"/>
+        </Grid>
+        <Label HorizontalOptions="Center" xct:DockLayout.Dock="Top">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Всего волонтеров: "/>
+                    <Span Text="{Binding Volunteers.Count, Mode=OneWay}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Volunteers}" AutoGenerateColumns="False">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn HeaderText="Имя" DisplayBinding="{Binding FirstName}"/>
+                <syncfusion:GridTextColumn HeaderText="Фамилия" DisplayBinding="{Binding LastName}"/>
+                <syncfusion:GridTextColumn HeaderText="Страна" DisplayBinding="{Binding Country.CountryName}"/>
+                <syncfusion:GridTextColumn HeaderText="Пол" DisplayBinding="{Binding Gender}"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </xct:DockLayout>
+</ContentPage>

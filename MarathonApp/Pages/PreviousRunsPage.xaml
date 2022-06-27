@@ -1,0 +1,70 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.PreviousRunsPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+      Title="PreviousRunsPage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <StackLayout>
+        <Label Text="Результаты предыдущих гонок"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Label Text="Марафон"/>
+            <Label Text="Дистанция" Grid.Row="1"/>
+            <Label Text="Пол" Grid.Column="2"/>
+            <Label Text="Категория" Grid.Row="1" Grid.Column="2"/>
+            <Picker Grid.Column="1" x:Name="marathon" ItemDisplayBinding="{Binding YearCountryDisplayText}" ItemsSource="{Binding marathons}">
+            </Picker>
+            <Picker Grid.Column="1" Grid.Row="1" x:Name="distance" ItemsSource="{Binding distants}" ItemDisplayBinding="{Binding EventTypeName}">
+            </Picker>
+            <Picker Grid.Column="3" x:Name="gender">
+            </Picker>
+            <Picker Grid.Column="3" Grid.Row="1" x:Name="category">
+            </Picker>
+            <Button Text="Найти" Grid.Column="4" Grid.Row="1" Clicked="Button_Clicked"/>
+        </Grid>
+        <StackLayout Orientation="Horizontal">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Всего бегунов:"/>
+                        <Span Text="{Binding Runners.Count, Mode=OneWay}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Всего бегунов финишировало:"/>
+                        <Span Text="{Binding Finished, Mode=OneWay}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="среднее время:"/>
+                        <Span Text="{Binding AvgTime, Mode=OneWay}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+        <syncfusion:SfDataGrid ItemsSource="{Binding Runners}" AutoGenerateColumns="False">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn HeaderText="Место" DisplayBinding="{Binding Position}"/>
+                <syncfusion:GridTextColumn HeaderText="Время" DisplayBinding="{Binding Time}"/>
+                <syncfusion:GridTextColumn HeaderText="Имя бегуна" DisplayBinding="{Binding Runner.RunnerFIO}"/>
+                <syncfusion:GridTextColumn HeaderText="Страна" DisplayBinding="{Binding Runner.Country.CountryCode}"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </StackLayout>
+</ContentPage>

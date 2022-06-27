@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      x:Class="MarathonApp.Pages.ThankPage"
+      Title="ThankPage">
+
+    <Grid>
+        <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+            <Label Text="Спасибо за вашу спонсорскую поддержку!" HorizontalOptions="Center"/>
+            <Label Text="Спасибо за поддержку бегуна в MArathon Skills!" HorizontalOptions="Center"/>
+            <Label Text="Ваше пожертвование пойдёт в его благотворительную организацию" HorizontalOptions="Center"/>
+            <Label x:Name="RunnerInfoLabel" HorizontalOptions="Center" FontSize="20"/>
+            <Label x:Name="CharityLabel" HorizontalOptions="Center" FontSize="30"/>
+            <Label x:Name="MoneyLabel" HorizontalOptions="Center" FontSize="50"/>
+            <Frame Style="{StaticResource SmallButtonBorder}" HorizontalOptions="Center" x:Name="BackButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Назад"/>
+            </Frame>
+        </StackLayout>
+        
+    </Grid>
+</ContentPage>

@@ -1,0 +1,40 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.AddReviewPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:xf="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+      Title="AddReviewPage">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <xf:WrapLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Марафон"/>
+                    <Picker x:Name="MarathonPicker" WidthRequest="150" ItemDisplayBinding="{Binding MarathonName}"/>
+                </StackLayout>
+                <Label Text="Оцените марафон"/>
+                <StackLayout Orientation="Horizontal">
+                    <RadioButton GroupName="ReviewMarkGroup" Content="1" x:Name="Mark1RadioButton" Margin="5"/>
+                    <RadioButton GroupName="ReviewMarkGroup" Content="2" x:Name="Mark2RadioButton" Margin="5"/>
+                    <RadioButton GroupName="ReviewMarkGroup" Content="3" x:Name="Mark3RadioButton" Margin="5"/>
+                    <RadioButton GroupName="ReviewMarkGroup" Content="4" x:Name="Mark4RadioButton" Margin="5"/>
+                    <RadioButton GroupName="ReviewMarkGroup" Content="5" x:Name="Mark5RadioButton" Margin="5" IsChecked="True"/>
+                </StackLayout>
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="SendButton" Margin="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SendButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Отправить" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Frame>
+                <Label x:Name="ErrorLabel"/>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Комментарий"/>
+                <Entry  HeightRequest="200" WidthRequest="200" x:Name="CommentEntry" Placeholder="Комментарий..."/>
+            </StackLayout>
+        </xf:WrapLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,189 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.BMICalculatorPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfRangeSlider.XForms;assembly=Syncfusion.SfRangeSlider.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             Title="BMI Calculator">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+        </Style>
+        <Style TargetType="StackLayout" x:Key="ColorStack">
+            <Setter Property="Margin" Value="0"/>
+        </Style>
+        <SolidColorBrush x:Key="SliderThumb.Static.Foreground" Color="#FFE5E5E5"/>
+        <SolidColorBrush x:Key="SliderThumb.MouseOver.Background" Color="#FFDCECFC"/>
+        <SolidColorBrush x:Key="SliderThumb.MouseOver.Border" Color="#FF7Eb4EA"/>
+        <SolidColorBrush x:Key="SliderThumb.Pressed.Background" Color="#FFDAECFC"/>
+        <SolidColorBrush x:Key="SliderThumb.Pressed.Border" Color="#FF569DE5"/>
+        <SolidColorBrush x:Key="SliderThumb.Disabled.Background" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="SliderThumb.Disabled.Border" Color="#FFD9D9D9"/>
+        <SolidColorBrush x:Key="SliderThumb.Static.Background" Color="#FFF0F0F0"/>
+        <SolidColorBrush x:Key="SliderThumb.Static.Border" Color="#FFACACAC"/>
+        <SolidColorBrush x:Key="SliderThumb.Track.Border" Color="#FFD6D6D6"/>
+        <SolidColorBrush x:Key="SliderThumb.Track.Background" Color="#FFE7EAEA"/>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Text="BMI калькулятор"
+               Grid.ColumnSpan="2"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"/>
+        <StackLayout Grid.Column="0" Grid.Row="1">
+            <Label Text="Информация о том что такое BMI и как калькулятор работает" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <buttons:SfButton 
+                    x:Name="ManButton"
+                    HeightRequest="80" 
+                    WidthRequest="80"
+                    Margin="10" 
+                    Clicked="ManButton_Clicked"
+                    ImageSource="men.png"
+                    ShowIcon="True" 
+                    Text="Мужской"
+                    ImageWidth="50"
+                    ImageAlignment="Top"/>
+                <buttons:SfButton 
+                    x:Name="WomanButton"
+                    HeightRequest="80" 
+                    WidthRequest="80"
+                    Margin="10" 
+                    Clicked="ManButton_Clicked"
+                    ImageSource="mowan.png"
+                    ShowIcon="True" 
+                    Text="Женский"
+                    ImageWidth="50"
+                    ImageAlignment="Top"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Рост:" WidthRequest="50"/>
+                <Entry x:Name="HeightEntry" WidthRequest="30"/>
+                <Label Text=" см" WidthRequest="20"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Вес:" WidthRequest="50"/>
+                <Entry x:Name="WeightEntry"  WidthRequest="30"/>
+                <Label Text=" кг" WidthRequest="20"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Возраст:" WidthRequest="50"/>
+                <Entry x:Name="AgeEntry"  WidthRequest="30"/>
+                <Label Text=" лет" WidthRequest="20"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="CalculateButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CalculateButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Рассчитать"/>
+                </Frame>
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="CancelButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CancelButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Отмена"/>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+        <Frame  BorderColor="Black"
+                Background="{StaticResource SecondColor}"
+                Grid.Column="1"
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="150" 
+                HeightRequest="200">
+            <StackLayout>
+                <Image x:Name="PeoplePicture" WidthRequest="100" HeightRequest="150"/>
+                <Label x:Name="StatusLabel" Margin="10"/>
+            </StackLayout>
+        </Frame>
+
+        <StackLayout Grid.Row="2" Grid.Column="1" WidthRequest="400" x:Name="DiagramStackLayout" Grid.ColumnSpan="2">
+            <Label x:Name="BMILabel" HorizontalOptions="Center" Text="{Binding Source={x:Reference BMISlider}, Path=Value}" />
+            <syncfusion:SfRangeSlider x:Name="BMISlider" Minimum="20" RangeStart="20" RangeEnd="20" Maximum="30" IsEnabled="False" TickFrequency="5" TickPlacement="BottomRight" Style="{DynamicResource SliderStyle}"></syncfusion:SfRangeSlider>
+            <!--<Slider x:Name="BMISlider" SelectionStart="20" SelectionEnd="30" IsSelectionRangeEnabled="True" IsEnabled="False" TickFrequency="5" TickPlacement="BottomRight">-->
+                <!--<Slider.Template>
+                    <ControlTemplate>
+                        <StackLayout Orientation="Horizontal" Height="20" Width="250">
+                            <Rectangle Fill="Yellow" Width="60"/>
+                            <Rectangle Fill="Green" Width="60"/>
+                            <Rectangle Fill="Yellow" Width="60"/>
+                            <Rectangle Fill="Red" Width="60"/>
+                        </StackLayout>
+                    </ControlTemplate>
+                </Slider.Template>-->
+            <!--</Slider>-->
+
+            <!--<TickBar x:Name="BMITickBar" IsSelectionRangeEnabled="True" IsEnabled="False" Visibility="Visible" Height="50">
+                <TickBar.Fill>
+                    <SolidColorBrush Color="Red"></SolidColorBrush>
+                </TickBar.Fill>
+                
+            </TickBar>-->
+            <!--<StackLayout Orientation="Horizontal" Height="40" Width="400" >
+                <StackLayout Orientation="Vertical" Style="{StaticResource ColorStack}">
+                    <Rectangle Fill="Yellow" Height="20" Width="100"/>
+                    <Label Text="Недостаточный" FontSize="9" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Style="{StaticResource ColorStack}">
+                    <Rectangle Fill="Green" Height="20" Width="100"/>
+                    <Label Text="Здоровый" FontSize="9"  HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Style="{StaticResource ColorStack}">
+                    <Rectangle Fill="Yellow" Height="20" Width="100"/>
+                    <Label Text="Избыточный" FontSize="9"  HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Style="{StaticResource ColorStack}">
+                    <Rectangle Fill="Red" Height="20" Width="100"/>
+                    <Label Text="Ожирение" FontSize="9"  HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>-->
+        </StackLayout>
+        <StackLayout HorizontalOptions="Center"
+                    Grid.Column="2"
+                    Grid.Row="1">
+            <Label Text="Информация о показателях калорий показывается здесь"
+                       />
+            <Label Text="Ваш BMR" HorizontalOptions="Center"/>
+            <Label x:Name="BMRValueLabel" HorizontalOptions="Center" FontSize="30"/>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Ежедневно тратится колорий" HorizontalOptions="Center"/>
+                <Button x:Name="AboutButton" Text="..." HeightRequest="30" WidthRequest="30" Clicked="AboutButton_Clicked"/>
+            </StackLayout>
+            <Label x:Name="SitCaloryLabel" TextColor="Blue"/>
+            <Label x:Name="LowCaloryLabel" TextColor="Green"/>
+            <Label x:Name="AverageCaloryLabel" TextColor="Yellow"/>
+            <Label x:Name="HighCaloryLabel" TextColor="Orange"/>
+            <Label x:Name="MaxCaloryLabel" TextColor="Red"/>
+        </StackLayout>
+
+        <Frame Grid.ColumnSpan="3" Grid.RowSpan="3"
+                HeightRequest="300"
+                WidthRequest="500"
+                BackgroundColor="Black"
+                Background="{StaticResource SecondColor}"
+                x:Name="ActivityBorder">
+            <StackLayout WidthRequest="470">
+                <Image Source="cross.png" HeightRequest="15" HorizontalOptions="End" x:Name="CrossImage">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CrossImage_MouseLeftButtonDown"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Уровень активности" HorizontalOptions="Center"/>
+                <Label Text="Это описание всех уровней активности" HorizontalOptions="Start"/>
+                
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

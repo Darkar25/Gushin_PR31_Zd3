@@ -1,0 +1,77 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.ReviewsPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:syncfusion="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             Title="ReviewsPage">
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="3" Text="Статистика отзывов" HorizontalOptions="Center" VerticalOptions="Start" Margin="10"/>
+        <StackLayout Grid.Column="0">
+            <Label Text="Последние отзывы:"/>
+            <StructuredItemsView x:Name="ReviewItemsControl">
+                <StructuredItemsView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{Binding Volunteer.FirstName}"/>
+                            <Label Text=": "/>
+                            <Label Text="{Binding ReviewDescription}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </StructuredItemsView.ItemTemplate>
+            </StructuredItemsView>
+            </StackLayout>
+        <extensions:UniformGrid Grid.Column="1" VerticalOptions="Center">
+            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="ManFilterButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ManFilterButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image Source="men.png" WidthRequest="50" HeightRequest="50"/>
+                    <Label Text="Мужчины" HorizontalOptions="Center"/>
+                    <Label x:Name="ManCountLabel" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame  Style="{StaticResource SmallButtonBorder}"  x:Name="WomenFilterButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="WomenFilterButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image Source="mowan.png" WidthRequest="50" HeightRequest="50"/>
+                    <Label Text="Женщины" HorizontalOptions="Center"/>
+                    <Label x:Name="WomanCountLabel" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame  Style="{StaticResource SmallButtonBorder}"  x:Name="RussiaFilterButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="RussiaFilterButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image Source="men.png" WidthRequest="50" HeightRequest="50"/>
+                    <Label Text="Россия" HorizontalOptions="Center"/>
+                    <Label x:Name="RussiaCountLabel" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+            <Frame  Style="{StaticResource SmallButtonBorder}"  x:Name="AnotherCountriesButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AnotherCountriesButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <StackLayout>
+                    <Image Source="men.png" WidthRequest="50" HeightRequest="50"/>
+                    <Label Text="Другие страны" HorizontalOptions="Center"/>
+                    <Label x:Name="AnotherCountriesCountLabel" HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+        </extensions:UniformGrid>
+
+        <syncfusion:SfChart Grid.Column="2" x:Name="ReviewChart"></syncfusion:SfChart>
+
+    </Grid>
+</ContentPage>

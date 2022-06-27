@@ -1,0 +1,69 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.AddNewUserPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+             Title="AddNewUserPage">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="150"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="WidthRequest" Value="100"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <Label HorizontalOptions="Center" VerticalOptions="Start" x:Name="PageLabel"/>
+        <forms:WrapLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Email:" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry x:Name="EmailEntry" Text="{Binding Email}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Имя:" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry x:Name="FirstNameEntry" Text="{Binding FirstName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Фамилия:" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry x:Name="LastNameEntry" Text="{Binding LastName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Роль:" Style="{StaticResource DescriptionLabel}"/>
+                    <Picker x:Name="RolePicker" ItemDisplayBinding="{Binding RoleName}"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label x:Name="PasswordLabel"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Пароль" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry IsPassword="True" x:Name="PasswordEntry"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Повтор пароля" Style="{StaticResource DescriptionLabel}"/>
+                    <Entry IsPassword="True" x:Name="PasswordRepeatEntry"/>
+                </StackLayout>
+                <Label Text="{Binding Password}" IsVisible="False" x:Name="PasswordValue"/>
+                <Label x:Name="ErrorsLabel"/>
+            </StackLayout>
+        </forms:WrapLayout>
+        
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="End">
+            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="SaveButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SaveButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Сохранить"/>
+            </Frame>
+            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="CancelButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CancelButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Отмена"/>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>

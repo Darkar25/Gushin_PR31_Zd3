@@ -1,0 +1,47 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.MarathonMapPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="MarathonMapPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Image Source="MarathonMap.jpg" HorizontalOptions="Start" HeightRequest="380" VerticalOptions="Start"/>
+        <AbsoluteLayout x:Name="InteractiveMapCanvas" Grid.Column="0">
+
+            <Button Text="1" Style="{DynamicResource CircleButton}" AbsoluteLayout.LayoutBounds="21,0" Background="Orange" Clicked="CircleButton_Clicked"/>
+            <Button Text="2" Style="{DynamicResource CircleButton}" AbsoluteLayout.LayoutBounds="58,119" Background="Orange" Clicked="CircleButton_Clicked"/>
+            <Button Text="3" Style="{DynamicResource CircleButton}" AbsoluteLayout.LayoutBounds="131,330" Background="Orange" Clicked="CircleButton_Clicked"/>
+            <Button Text="4" Style="{DynamicResource CircleButton}" AbsoluteLayout.LayoutBounds="330,0" Background="Orange" Clicked="CircleButton_Clicked"/>
+            <Button Text="5" Style="{DynamicResource CircleButton}" AbsoluteLayout.LayoutBounds="330,266" Background="Orange" Clicked="CircleButton_Clicked"/>
+            <Button Text="6" Style="{DynamicResource CircleButton}" AbsoluteLayout.LayoutBounds="179,158" Background="Orange" Clicked="CircleButton_Clicked"/>
+        </AbsoluteLayout>
+        <Frame x:Name="CheckPointInfoBorder"
+                Margin="10"
+                Padding="5"
+                BorderColor="Black"
+                Grid.Column="1"
+                HorizontalOptions="End"
+                VerticalOptions="Start"
+                Background="{StaticResource SecondColor}" 
+                HeightRequest="300"
+                WidthRequest="200"
+                IsVisible="False">
+            <StackLayout>
+                <Image Source="cross.png"
+                       HeightRequest="15"
+                       HorizontalOptions="End"
+                       x:Name="CrossImage">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CrossImage_MouseLeftButtonDown"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="CheckpointNameLabel"/>
+                <Label Text="Особенности:"/>
+                <Label x:Name="CheckpointPerksLabel"/>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MarathonApp.App">
+    <Application.Resources>
+        <SolidColorBrush x:Key="MainColor" Color="Gray"/>
+        <SolidColorBrush x:Key="SecondColor" Color="LightGray"/>
+
+        <Style TargetType="Frame" x:Key="BigButtonBorder">
+            <Setter Property="HeightRequest" Value="80"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="WidthRequest" Value="300"/>
+            <Setter Property="Background" Value="{StaticResource SecondColor}"/>
+            <Setter Property="CornerRadius" Value="20"/>
+        </Style>
+
+        <Style TargetType="Frame" x:Key="SmallButtonBorder">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="BorderColor" Value="Black"/>
+            <Setter Property="Background" Value="{StaticResource SecondColor}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="MainLabel">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+
+        <Style TargetType="Label" x:Key="DescriptionLabel">
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="FontFamily" Value="Fonts/#Akrobat Bold"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="ButtonBaseControlTemplate1">
+            <!--Setter Property="ControlTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Frame CornerRadius="5" x:Name="border" BorderColor="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="contentPresenter" Content="{TemplateBinding Content}" Margin="{TemplateBinding Padding}" HorizontalOptions="{TemplateBinding HorizontalContentAlignment}" VerticalOptions="{TemplateBinding VerticalContentAlignment}"/>
+                            <Frame.Triggers>
+                                <Trigger Property="Button.IsDefaulted" Value="True">
+                                    <Setter Property="BorderColor" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="True">
+                                    <Setter Property="Background" TargetName="border" Value="#FFC4E5F6"/>
+                                    <Setter Property="BorderColor" TargetName="border" Value="#FF2C628B"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                                    <Setter Property="BorderColor" TargetName="border" Value="#FFADB2B5"/>
+                                    <Setter Property="Foreground" Value="#FF838383"/>
+                                </Trigger>
+                            </Frame.Triggers>
+                        </Frame>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter-->
+        </Style>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="#FFDDDDDD"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <Style x:Key="CircleButton" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{StaticResource Button.Static.Background}"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <!--Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Frame x:Name="border" Height="50" Width="50" CornerRadius="50" BorderColor="{TemplateBinding BorderBrush}" Background="{TemplateBinding Background}">
+                            <ContentPresenter x:Name="contentPresenter" Margin="{TemplateBinding Padding}" HorizontalOptions="{TemplateBinding HorizontalContentAlignment}" VerticalOptions="{TemplateBinding VerticalContentAlignment}"/>
+                            <Frame.Triggers>
+                                <Trigger Property="IsDefaulted" Value="true">
+                                    <Setter Property="BorderColor" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                                </Trigger>
+                                <Trigger Property="IsPressed" Value="true">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                                    <Setter Property="BorderColor" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                                </Trigger>
+                                <Trigger Property="IsEnabled" Value="false">
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                                    <Setter Property="BorderColor" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                                    <Setter Property="Foreground" TargetName="contentPresenter" Value="{StaticResource Button.Disabled.Foreground}"/>
+                                </Trigger>
+                            </Frame.Triggers>
+                        </Frame>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter-->
+        </Style>
+    </Application.Resources>
+</Application>

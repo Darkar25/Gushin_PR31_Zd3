@@ -1,0 +1,40 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.InfoPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             Title="InfoPage">
+
+    <Grid>
+        <extensions:UniformGrid HorizontalOptions="Center" VerticalOptions="Center" >
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="MarathonSkillsInfoButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="MarathonSkillsInfoButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Marathon Skills" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="HowLongInfoButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="HowLongInfoButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Насколько долгий марафон" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="PreviousResultsButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="PreviousResultsButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Предыдущие результаты" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="CharityButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CharityButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Список благотворительных организаций" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="CalculatorButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="CalculatorButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="BMI Калькулятор" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+        </extensions:UniformGrid>
+    </Grid>
+</ContentPage>

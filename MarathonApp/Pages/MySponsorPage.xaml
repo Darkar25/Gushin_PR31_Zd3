@@ -1,0 +1,37 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.MySponsorPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             Title="MySponsorPage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <xct:DockLayout>
+        <Label xct:DockLayout.Dock="Top" Text="Мой спонсор"/>
+        <Label xct:DockLayout.Dock="Top" Text="Здесь показанываши спонсоры на MarathonSkills 2022"/>
+        <StackLayout xct:DockLayout.Dock="Right">
+            <ListView ItemsSource="{Binding Sponsors}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Name}"/>
+                                    <Span Text="{Binding Amount}"/>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Всего"/>
+                        <Span Text="{Binding Total, Mode=OneWay}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+        <Label Text="{Binding DisplaySponsor.Name}" xct:DockLayout.Dock="Top"/>
+        <Label Text="{Binding DisplaySponsor.Charity.CharityDescription}" xct:DockLayout.Dock="Bottom"/>
+        <Image Source="{Binding DisplaySponsor.Charity.Logo}"/>
+    </xct:DockLayout>
+</ContentPage>

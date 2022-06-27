@@ -1,0 +1,9 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.InventoryPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="InventoryPage">
+
+    <Grid>
+        
+    </Grid>
+</ContentPage>

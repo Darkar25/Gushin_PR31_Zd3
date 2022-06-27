@@ -1,0 +1,54 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.LoginPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="LoginPage">
+    <ContentPage.Resources>
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <StackLayout HorizontalOptions="Center">
+            <Label Text="Форма авторизации"/>
+            <Label Text="Пожалуйста авторизируйтесь в системе, используя ваш адрес электронной почты и пароль." />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Email:" Style="{StaticResource DescriptionLabel}"/>
+                <Entry x:Name="EmailEntry" WidthRequest="150" TabIndex="0" HeightRequest="30" Placeholder="Введите Email">
+                </Entry>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Password:" Style="{StaticResource DescriptionLabel}"/>
+                <Entry IsPassword="True" x:Name="PasswordEntry" WidthRequest="150" TabIndex="1" IsTabStop="True" HeightRequest="30"/>
+            </StackLayout>
+            <StackLayout HorizontalOptions="Center">
+                <Label Text="Капча:" HorizontalOptions="Center"/>
+                <Frame BorderColor="Black">
+                    <Label x:Name="CapchaLabel" FontSize="20"  HorizontalOptions="Center"/>
+                </Frame>
+                <Entry x:Name="CapchaEntry" WidthRequest="150" HorizontalOptions="Center" Margin="10" HeightRequest="30"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="LoginButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="LoginButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Login" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Frame>
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="CancelButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="CancelButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Cancel" VerticalOptions="Center" HorizontalOptions="Center"/>
+                </Frame>
+            </StackLayout>
+            <Label x:Name="TimerEntry" IsVisible="False" HorizontalOptions="Center"/>
+            
+        </StackLayout>
+        <StackLayout HorizontalOptions="End" VerticalOptions="End">
+            <Button x:Name="DebugRunnerButton" Text="Перейти как участник" Clicked="DebugRunnerButton_Clicked"/>
+            <Button x:Name="DebugCoordinatorButton" Text="Перейти как Координатор" Clicked="DebugCoordinatorButton_Clicked"/>
+            <Button x:Name="DebugViewerButton" Text="Перейти как зритель" Clicked="DebugViewerButton_Clicked"/>
+            <Button x:Name="DebugAdminButton" Text="Перейти как администратор" Clicked="DebugAdminButton_Clicked"/>
+        </StackLayout>
+    </Grid>
+</ContentPage>

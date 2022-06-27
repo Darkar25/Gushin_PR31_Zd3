@@ -1,0 +1,88 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.RunnersManagementPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+             Title="RunnersManagementPage">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="150"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="HeightRequest" Value="30"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="Button">
+            
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Label Text="Управление бегунами"/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1">
+        <forms:WrapLayout >
+            <StackLayout>
+                <Label Text="Сортировка и фильтрация"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Марафон: " Style="{StaticResource DescriptionLabel}"/>
+                        <Picker x:Name="MarathonPicker" ItemDisplayBinding="{Binding MarathonName}"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Сотрировать: " Style="{StaticResource DescriptionLabel}"/>
+                    <Picker x:Name="SortPicker" SelectedIndex="0"/>
+                    <Frame Style="{StaticResource SmallButtonBorder}" x:Name="DataGridRefreshButton">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="DataGridRefreshButton_MouseLeftButtonDown"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Обновить"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout>
+                <Label Text="Выгрузка" HorizontalOptions="Center"/>
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="FileExportButton">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="FileExportButton_MouseLeftButtonDown"/>
+                        </Frame.GestureRecognizers>
+                        <Label Text="Детальная информация (CSV)"/>
+                </Frame>
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="EmailExportButton">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="EmailExportButton_MouseLeftButtonDown"/>
+                        </Frame.GestureRecognizers>
+                        <Label Text="E-mail список" HorizontalOptions="Center"/>
+                </Frame>
+            </StackLayout>
+        </forms:WrapLayout>
+            <Label x:Name="TotalRunnersLabel"/>
+        </StackLayout>
+        <syncfusion:SfDataGrid Grid.Row="2" x:Name="RunnersDataGrid" AutoGenerateColumns="False">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn MappingName="firstname" HeaderText="Имя"  DisplayBinding="{Binding Runner.User.FirstName}"/>
+                <syncfusion:GridTextColumn MappingName="lastname" HeaderText="Фамилия"  DisplayBinding="{Binding Runner.User.LastName}"/>
+                <syncfusion:GridTextColumn MappingName="email" HeaderText="Email"  DisplayBinding="{Binding Runner.Email}"/>
+                <syncfusion:GridTemplateColumn  MappingName="button" Width="100">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="EditButton">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Tapped="EditButton_MouseLeftButtonDown"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="Edit"/>
+                            </Frame>
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>
+</ContentPage>

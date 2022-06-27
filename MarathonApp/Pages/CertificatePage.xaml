@@ -1,0 +1,55 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.CertificatePage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="CertificatePage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <StackLayout>
+        <Picker SelectedIndexChanged="mar_SelectionChanged" SelectedIndex="0" x:Name="mar" ItemsSource="{Binding Marathons}" ItemDisplayBinding="{Binding MarathonName}">
+        </Picker>
+        <Image Source="marathon-image.jpg" HeightRequest="128" Aspect="AspectFit"/>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span>Поздравляем</Span>
+                    <Span Text="{Binding Span.Runner.RunnerFIO}"/>
+                    <Span>с участием в</Span>
+                    <Span Text="{Binding Span.user3.MarathonName}"/>
+                    <Span>. Ваши результаты время</Span>
+                    <Span Text="{Binding Span.Time}"/>
+                    <Span>и занятое место</Span>
+                    <Span Text="{Binding Span.Position}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Bold" Text="Сертификат участника" FontSize="24"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span>в</Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Bold" Text="Marathon Skills 2022" FontSize="24"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding Span.user3.CityName}"/>
+                    <Span>,</Span>
+                    <Span Text="{Binding Span.user3.Country.CountryName}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </StackLayout>
+</ContentPage>

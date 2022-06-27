@@ -1,0 +1,58 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.RunnerMenuPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             Title="RunnerMenuPage">
+
+    <Grid>
+        <Label Text="Меню бегуна"/>
+        <extensions:UniformGrid HorizontalOptions="Center" VerticalOptions="Center">
+            <Frame Style="{StaticResource BigButtonBorder}">
+                <Label Text="Регистрация на марафон" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Border_MouseLeftButtonDown_1"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Мои результаты" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="ProfileEditButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ProfileEditButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Редактирование профиля" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="Border_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Мой спонсор" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Frame>
+            <Frame Style="{StaticResource BigButtonBorder}" x:Name="ContactsButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ContactsButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Контакты" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </Frame>
+        </extensions:UniformGrid>
+        <Frame  HeightRequest="300" WidthRequest="500" Background="White" HorizontalOptions="Center" VerticalOptions="Center" BorderColor="Black" x:Name="ContactsBorder" 
+            IsVisible="False">
+            <StackLayout>
+                <Image Source="cross.png" WidthRequest="20" HorizontalOptions="End" VerticalOptions="Start" x:Name="Cross">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Cross_MouseLeftButtonDown"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Контакты" HorizontalOptions="Center" VerticalOptions="Start"/>
+                <Label Text="Для получения дополнительной информации пожалуйста свяжитесь с координаторами"  Margin="10"/>
+                <forms:WrapLayout Margin="10">
+                    <Label Text="Телефон:" FontAttributes="Bold" WidthRequest="60"/>
+                    <Label Text="+55 11 9988 7766"/>
+                </forms:WrapLayout>
+                <forms:WrapLayout Margin="10">
+                    <Label Text="Email:" FontAttributes="Bold" WidthRequest="60"/>
+                    <Label Text="coordinators@marathonskills.org"/>
+                </forms:WrapLayout>
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,32 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.CharityPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="CharityPage">
+
+    <Grid>
+        <StackLayout>
+            <Label Text="Список благотворительных организаций"/>
+            <Label Text="Это - список всех благотворительных учреждений, которые поддерживаются в Marathon Skills. Спасибо за помощь вы поддерживаете их, спонсируя бегунов!" />
+            <StructuredItemsView x:Name="CharityItemsControl">
+                <StructuredItemsView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="{Binding Logo}" Grid.RowSpan="2"/>
+                            <Label Text="{Binding CharityName}"  Grid.Column="1"/>
+                            <Label Text="{Binding CharityDescription}" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                    </DataTemplate>
+                </StructuredItemsView.ItemTemplate>
+            </StructuredItemsView>
+        </StackLayout>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,79 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.UserManagementPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+             Title="UserManagementPage">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="150"/>
+        </Style>
+
+        <Style TargetType="Picker">
+            <Setter Property="WidthRequest" Value="100"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </ContentPage.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="150"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Text="Управление пользователями" HorizontalOptions="Center" VerticalOptions="Start" Grid.Row="0"/>
+        <forms:WrapLayout Grid.Row="1" HorizontalOptions="Center">
+                <Frame Style="{StaticResource SmallButtonBorder}"  HorizontalOptions="Center" VerticalOptions="Center" x:Name="AddNewUserButton">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="AddNewUserButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="+ Добавление нового" />
+                </Frame>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Фильтр по ролям:" Style="{StaticResource DescriptionLabel}"/>
+                        <Picker x:Name="RoleFilterPicker" ItemDisplayBinding="{Binding RoleName}" SelectedItem="{Binding RoleId}"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Сортировать по:" Style="{StaticResource DescriptionLabel}"/>
+                        <Picker x:Name="SortPicker"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Поиск:" Style="{StaticResource DescriptionLabel}"/>
+                        <Entry x:Name="SearchEntry"/>
+                    </StackLayout>
+                    <Frame Style="{StaticResource SmallButtonBorder}" HorizontalOptions="Center" x:Name="RefreshButton">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="RefreshButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Обновить"/>
+                    </Frame>
+                </StackLayout>
+            </forms:WrapLayout>
+        <Label x:Name="UserCountLabel" HorizontalOptions="Start" VerticalOptions="End" Grid.Row="1"/>
+
+        <ScrollView Grid.Row="2">
+            <syncfusion:SfDataGrid AutoGenerateColumns="False" x:Name="UsersDataGrid" AllowEditing="False" >
+                <syncfusion:SfDataGrid.Columns>
+                    <syncfusion:GridTextColumn MappingName="firstname" HeaderText="Имя" DisplayBinding="{Binding FirstName}"/>
+                    <syncfusion:GridTextColumn MappingName="lastname" HeaderText="Фамилия" DisplayBinding="{Binding LastName}"/>
+                    <syncfusion:GridTextColumn MappingName="email" HeaderText="Email"  DisplayBinding="{Binding Email}"/>
+                    <syncfusion:GridTextColumn MappingName="role" HeaderText="Роль"  DisplayBinding="{Binding Role.RoleName}"/>
+                    <syncfusion:GridTemplateColumn MappingName="button" Width="100">
+                        <syncfusion:GridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="EditButton">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="EditButton_MouseLeftButtonDown"/>
+                                    </Frame.GestureRecognizers>
+                                    <Label Text="Edit"/>
+                                </Frame>
+                            </DataTemplate>
+                        </syncfusion:GridTemplateColumn.CellTemplate>
+                    </syncfusion:GridTemplateColumn>
+                </syncfusion:SfDataGrid.Columns>
+            </syncfusion:SfDataGrid>
+        </ScrollView>
+    </Grid>
+</ContentPage>

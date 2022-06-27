@@ -1,0 +1,33 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.MyResultsPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+      Title="MyResultsPage" BindingContext="{Binding Mode=OneWay, Source={RelativeSource Self}}">
+
+    <StackLayout HorizontalOptions="Center">
+        <Label Text="Мои результаты" FontSize="18" FontAttributes="Bold"/>
+        <Label Text="Это - список всех ваших прошлых результатов гонки для Marathon Skills."/>
+        <Label Text="Общее место сравнивает всех бегунов."/>
+        <Label Text="Место по категории compares Runners in the same gender and age categories."/>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span FontAttributes="Bold">Пол:</Span>
+                    <Span Text="{Binding Span.Gender}"/>
+                    <Span FontAttributes="Bold">Возрастная категория:</Span>
+                    <Span Text="{Binding category}"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <syncfusion:SfDataGrid AutoGenerateColumns="False" x:Name="results">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTextColumn HeaderText="Марафон" DisplayBinding="{Binding Marathon}"/>
+                <syncfusion:GridTextColumn HeaderText="Дистанция" DisplayBinding="{Binding Distance}"/>
+                <syncfusion:GridTextColumn HeaderText="Время" DisplayBinding="{Binding Time}"/>
+                <syncfusion:GridTextColumn HeaderText="Общее место" DisplayBinding="{Binding GlobalPosition}"/>
+                <syncfusion:GridTextColumn HeaderText="Место по категории" DisplayBinding="{Binding CategoryPosition}"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+        <Button Text="Показать все результаты"/>
+    </StackLayout>
+</ContentPage>

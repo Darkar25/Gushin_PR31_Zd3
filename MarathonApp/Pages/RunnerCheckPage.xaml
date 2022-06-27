@@ -1,0 +1,22 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.RunnerCheckPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Я хочу стать бегуном">
+
+    <Grid>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="310">
+            <Frame x:Name="ButtonOldRunner" Style="{StaticResource BigButtonBorder}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ButtonOldRunner_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Я участвовал ранее" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+            <Frame x:Name="ButtonNewRunner" Style="{StaticResource BigButtonBorder}">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ButtonNewRunner_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Я новый участник" HorizontalOptions="Center" VerticalOptions="Center"/>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</ContentPage>

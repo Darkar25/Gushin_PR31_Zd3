@@ -1,0 +1,27 @@
+﻿<NavigationPage x:Class="MarathonApp.Pages.NavigationPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <NavigationPage.TitleView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Rectangle Fill="{StaticResource MainColor}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                <Frame Style="{StaticResource SmallButtonBorder}" x:Name="ButtonBack">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="ButtonBack_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Назад"/>
+                </Frame>
+                <Label Text="MARATHON SKILLS 2022" Style="{StaticResource MainLabel}"/>
+            </StackLayout>
+            <Frame Style="{StaticResource SmallButtonBorder}" x:Name="LogOutButton" HorizontalOptions="End" HeightRequest="30" IsVisible="False">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="LogOutButton_MouseLeftButtonDown"/>
+                </Frame.GestureRecognizers>
+                <Label Text="Logout"/>
+            </Frame>
+        </Grid>
+    </NavigationPage.TitleView>
+</NavigationPage>

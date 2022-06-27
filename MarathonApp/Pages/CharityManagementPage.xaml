@@ -1,0 +1,43 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.CharityManagementPage"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:syncfusion="clr-namespace:Syncfusion.SfDataGrid.XForms;assembly=Syncfusion.SfDataGrid.XForms"
+      Title="CharityManagementPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Text="Просмотр спонсоров"
+               HorizontalOptions="Center"/>
+        <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Отсортировать: " VerticalOptions="Center"/>
+                <Picker x:Name="SortPicker" WidthRequest="200" HeightRequest="25" SelectedIndex="0"/>
+                <Frame x:Name="SortButton" Style="{StaticResource SmallButtonBorder}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SortButton_MouseLeftButtonDown"/>
+                    </Frame.GestureRecognizers>
+                    <Label Text="Сортировка"/>
+                </Frame>
+            </StackLayout>
+            <Label x:Name="CharityCountLabel" FontSize="30"/>
+            <Label x:Name="CharityMoneyCountLabel" FontSize="30"/>
+        </StackLayout>
+        <syncfusion:SfDataGrid x:Name="CharityDataGrid" Grid.Row="2" AutoGenerateColumns="False">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:GridTemplateColumn MappingName="logo" HeaderText="Логотип" Width="100">
+                    <syncfusion:GridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Logo}" HeightRequest="50"/>
+                        </DataTemplate>
+                    </syncfusion:GridTemplateColumn.CellTemplate>
+                </syncfusion:GridTemplateColumn>
+                <syncfusion:GridTextColumn MappingName="name" HeaderText="Наименование" DisplayBinding="{Binding CharityName}"/>
+                <syncfusion:GridTextColumn MappingName="sum" HeaderText="Сумма" DisplayBinding="{Binding MoneyCount, StringFormat='${0}'}"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </Grid>
+</ContentPage>

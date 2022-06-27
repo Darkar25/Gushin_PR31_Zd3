@@ -1,0 +1,112 @@
+﻿<ContentPage x:Class="MarathonApp.Pages.Sponsor"
+      xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:forms="clr-namespace:Xamarin.Forms;assembly=Xamarin.Forms.WrapLayout"
+             Title="Sponsor">
+    <ContentPage.Resources>
+        <Style TargetType="Entry">
+            <Setter Property="WidthRequest" Value="150"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        
+
+        <Style TargetType="Picker">
+            <Setter Property="WidthRequest" Value="100"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <Style TargetType="StackLayout">
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+
+    </ContentPage.Resources>
+    <Grid>
+        <StackLayout>
+            <Label Text="Спонсор бегуна" HorizontalOptions="Center"/>
+            <Label Text="Пожалуйста выберите бегуна, которого вы бы хотели спонсировать и сумму, которую вы хотели бы спонсировать. спасибо за вашу поддержку бегунов и их бляготворительных учреждений" />
+            <forms:WrapLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout>
+                    <Label Text="Информация о спонсоре"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Ваше имя:" Style="{StaticResource DescriptionLabel}"/>
+                        <Entry x:Name="NameEntry" TabIndex="0"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Бегун" Style="{StaticResource DescriptionLabel}"/>
+                        <Picker x:Name="RunnerPicker" ItemDisplayBinding="{Binding RunnerFIO}" TabIndex="1"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Карта" Style="{StaticResource DescriptionLabel}"/>
+                        <Entry x:Name="CardNameEntry" TabIndex="2"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Номер карты" Style="{StaticResource DescriptionLabel}"/>
+                        <Entry x:Name="CardNumberEntry" TabIndex="3"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Срок действия" Style="{StaticResource DescriptionLabel}"/>
+                        <Entry x:Name="CardMonthEntry" WidthRequest="25" TabIndex="4"/>
+                        <Entry x:Name="CardYearEntry" WidthRequest="40" TabIndex="5"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="CVC:" Style="{StaticResource DescriptionLabel}"/>
+                        <Entry x:Name="CVCCodeEntry" TabIndex="6"/>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="Благотворительность"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Picker x:Name="CharityPicker" ItemDisplayBinding="{Binding CharityName}" TabIndex="7"/>
+                        <Button x:Name="CharityAbout" Text="..." HeightRequest="30" WidthRequest="30" Clicked="CharityAbout_Clicked"/>
+                    </StackLayout>
+                    <Label Text="Сумма пожертвований"/>
+                    <Label x:Name="MoneyScreenLabel" FontSize="50"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="+" x:Name="PlusButton" Clicked="PlusButton_Clicked" HeightRequest="30" WidthRequest="30"/>
+                        <Entry WidthRequest="50" x:Name="MoneyEntry" TextChanged="MoneyEntry_TextChanged" TabIndex="8" IsTabStop="True"/>
+                        <Button Text="-" x:Name="MinusButton" Clicked="MinusButton_Clicked" HeightRequest="30" WidthRequest="30"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Frame Style="{StaticResource SmallButtonBorder}" x:Name="PaymentButton">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="PaymentButton_MouseLeftButtonDown"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Заплатить"/>
+                        </Frame>
+                        <Frame Style="{StaticResource SmallButtonBorder}" x:Name="CancelButton">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="CancelButton_MouseLeftButtonDown"/>
+                            </Frame.GestureRecognizers>
+                            <Label Text="Отмена"/>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </forms:WrapLayout>
+        </StackLayout>
+        <Frame x:Name="AboutCharityBorder"
+                Background="White" 
+                BorderColor="Black" 
+                HeightRequest="300" WidthRequest="500" 
+                HorizontalOptions="Center" 
+                VerticalOptions="Center">
+            <StackLayout>
+                <Image Source="cross.png" 
+                       WidthRequest="15" 
+                       HorizontalOptions="End" 
+                       VerticalOptions="Start"
+                       x:Name="Cross">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Cross_MouseLeftButtonDown"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label x:Name="CharityNameLabel"
+                       HorizontalOptions="Center"/>
+                <Image x:Name="CharityLogoImage"
+                       HeightRequest="100" WidthRequest="100"/>
+                <Label x:Name="CharityDescriptionLabel"
+                           />
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>
